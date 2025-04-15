@@ -21,7 +21,7 @@ jobs:
         run: docker save atlassian/confluence-server:8.6-jdk17 -o confluence-jdk17.tar
 
       - name: Upload Artifact - ubuntu-jdk17
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: confluence-ubuntu-jdk17
           path: confluence-ubuntu-jdk17.tar
