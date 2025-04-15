@@ -1,0 +1,33 @@
+name: Save Confluence Docker Images
+
+on:
+  workflow_dispatch:  # Bisa dijalankan manual dari GitHub
+
+jobs:
+  save-confluence-images:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Pull Confluence Image - ubuntu-jdk17
+        run: docker pull atlassian/confluence-server:8.6-ubuntu-jdk17
+
+      - name: Pull Confluence Image - jdk17
+        run: docker pull atlassian/confluence-server:8.6-jdk17
+
+      - name: Save Image ubuntu-jdk17 to TAR
+        run: docker save atlassian/confluence-server:8.6-ubuntu-jdk17 -o confluence-ubuntu-jdk17.tar
+
+      - name: Save Image jdk17 to TAR
+        run: docker save atlassian/confluence-server:8.6-jdk17 -o confluence-jdk17.tar
+
+      - name: Upload Artifact - ubuntu-jdk17
+        uses: actions/upload-artifact@v3
+        with:
+          name: confluence-ubuntu-jdk17
+          path: confluence-ubuntu-jdk17.tar
+
+      - name: Upload Artifact - jdk17
+        uses: actions/upload-artifact@v3
+        with:
+          name: confluence-jdk17
+          path: confluence-jdk17.tar
