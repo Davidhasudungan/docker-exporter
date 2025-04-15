@@ -27,7 +27,7 @@ jobs:
           path: confluence-ubuntu-jdk17.tar
 
       - name: Upload Artifact - jdk17
-        uses: actions/upload-artifact@v3
+        uses: actions/upload-artifact@v4
         with:
           name: confluence-jdk17
           path: confluence-jdk17.tar
